@@ -1,3 +1,76 @@
 # Issue Tracker
 
-This is the boilerplate for the Issue Tracker project. Instructions for building your project can be found at https://www.freecodecamp.org/learn/quality-assurance/quality-assurance-projects/issue-tracker
+โปรเจกต์ตัวอย่าง Issue Tracker (boilerplate)
+
+ไฟล์นี้เป็น README สั้น ๆ สำหรับโปรเจกต์ Issue Tracker ที่ใช้ฝึกทำตามโจทย์ของ FreeCodeCamp ในหมวด Quality Assurance. โค้ดภายในโปรเจกต์ประกอบด้วยเซิร์ฟเวอร์ Node.js, โมเดลข้อมูลตัวอย่าง, และชุดทดสอบอัตโนมัติ
+
+หัวข้อสำคัญที่รวมอยู่ใน README นี้:
+
+- ภาพรวมของโปรเจกต์
+- การติดตั้งและรันเซิร์ฟเวอร์ (บนเครื่องพัฒนา)
+- วิธีรันชุดทดสอบที่ให้มา
+- หมายเหตุการปรับใช้ (deployment) และการตั้งค่า environment
+
+## สิ่งที่มีในโปรเจกต์
+
+- `server.js` - entry point ของแอป (Express server)
+- `routes/api.js` - เส้นทาง API สำหรับจัดการ issue
+- `models.js` - โมเดลข้อมูล (in-memory / ตัวอย่าง)
+- `db-connection.js` - จุดเชื่อมต่อฐานข้อมูล (สำหรับตัวอย่างนี้เป็นแบบง่าย)
+- `public/` - ไฟล์สาธารณะ (CSS, หน้า HTML)
+- `views/` - หน้า HTML สำหรับ UI (index, issue)
+- `tests/` - ชุดทดสอบอัตโนมัติจาก FreeCodeCamp
+- `package.json` - รายการ dependency และสคริปต์ที่เกี่ยวข้อง
+
+## ติดตั้ง (บนเครื่อง Windows / macOS / Linux)
+
+1. ติดตั้ง Node.js (แนะนำเวอร์ชัน LTS)
+2. เปิดเทอร์มินอลที่โฟลเดอร์โปรเจกต์
+3. ติดตั้ง dependency:
+
+    ```bash
+    npm install
+    ```
+
+4. สร้างหรือปรับไฟล์ environment ถ้าจำเป็น (ไฟล์ตัวอย่าง `sample.env` มีให้)
+
+## รันแอป (พัฒนา)
+
+รันเซิร์ฟเวอร์ด้วยคำสั่ง:
+
+```bash
+node server.js
+```
+
+หรือถ้าคุณใช้ nodemon:
+
+```bash
+npx nodemon server.js
+```
+
+โดยปกติเซิร์ฟเวอร์จะฟังที่พอร์ตที่กำหนดภายใน `server.js` หรือจากตัวแปรแวดล้อม `PORT`. เปิดเบราว์เซอร์ไปที่ `http://localhost:3000` (หรือพอร์ตที่ตั้งไว้) เพื่อดูหน้า UI
+
+## รันชุดทดสอบ
+
+โปรเจกต์รวมชุดทดสอบจาก FreeCodeCamp เพื่อยืนยันความถูกต้องของงาน:
+
+```bash
+npm test
+```
+
+หรือเรียกสคริปต์ที่กำหนดไว้ใน `package.json` (เช่น `node test-runner.js`) ขึ้นอยู่กับการตั้งค่าในไฟล์
+
+## การตั้งค่า environment
+
+ถ้าจำเป็นให้ตั้งค่าตัวแปรแวดล้อมในไฟล์ `.env` (หรือใช้ `sample.env` เป็นตัวอย่าง) เช่น:
+
+- `PORT` - พอร์ตที่เซิร์ฟเวอร์จะฟัง
+- `MONGO_URI` / DB settings - ถ้าเชื่อมต่อฐานข้อมูลจริง
+
+## หมายเหตุการปรับใช้
+
+สำหรับการใช้งานจริง ให้เชื่อมต่อกับฐานข้อมูลถาวร (เช่น MongoDB) และตั้งค่าตัวแวดล้อมในระบบโฮสต์ เช่น Heroku, Render หรือบริการ VM
+
+เมื่อปรับใช้ ให้รัน `npm install --production` และตั้งค่า `PORT` ตามค่าที่โฮสติ้งมอบให้
+
+---
